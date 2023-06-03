@@ -1,5 +1,4 @@
 /*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 Copyright © 2023 Jun Nishimura <n.junjun0303@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,6 +27,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/JunNishimura/konmari/internal/extension"
 	"github.com/JunNishimura/konmari/internal/file"
 	"github.com/spf13/cobra"
 )
@@ -64,6 +64,17 @@ var rootCmd = &cobra.Command{
 				filePaths = append(filePaths, cleanedArg)
 			}
 		}
+
+		// execute comment cleaner
+		for _, path := range filePaths {
+			// file extension validation check
+			fileName := file.ExtractFileName(path)
+			if !extension.IsAcceptible(fileName) {
+				fmt.Printf("'%s' has no-acceptible file extension. skip comment cleaning\n", fileName)
+				continue
+			}
+		}
+
 		return nil
 	},
 }
