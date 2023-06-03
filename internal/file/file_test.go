@@ -43,7 +43,7 @@ func TestExtractFileName(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := ExtractFileName(tt.args.path)
+			got := extractFileName(tt.args.path)
 			if got != tt.want {
 				t.Errorf("got = %s, want = %s", got, tt.want)
 			}

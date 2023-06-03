@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ExtractFileName(path string) string {
+func extractFileName(path string) string {
 	cleanedPath := strings.ReplaceAll(path, `\`, "/")
 	pathSplit := strings.Split(cleanedPath, "/")
 	return pathSplit[len(pathSplit)-1]
