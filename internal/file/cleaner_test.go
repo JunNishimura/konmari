@@ -115,6 +115,25 @@ console.log("Hello, World")
 console.log("hogehoge") `,
 			wantErr: nil,
 		},
+		{
+			name:     "success: typescript",
+			fileName: "test.ts",
+			content: `
+// one-line comment
+console.log("Hello, World")
+/*
+multiple 
+line
+comment
+*/
+console.log("hogehoge") // test`,
+			want: `
+
+console.log("Hello, World")
+
+console.log("hogehoge") `,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -19,6 +19,7 @@ var (
 		extension.Go:         `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Python:     `#.*|#.*|'''[\s\S]*?'''`,
 		extension.JavaScript: `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.TypeScript: `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 
