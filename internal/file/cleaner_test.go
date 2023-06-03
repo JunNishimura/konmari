@@ -96,6 +96,25 @@ def main():
 	print("hello") `,
 			wantErr: nil,
 		},
+		{
+			name:     "success: javascript",
+			fileName: "test.js",
+			content: `
+// one-line comment
+console.log("Hello, World")
+/*
+multiple 
+line
+comment
+*/
+console.log("hogehoge") // test`,
+			want: `
+
+console.log("Hello, World")
+
+console.log("hogehoge") `,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
