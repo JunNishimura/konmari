@@ -2,26 +2,32 @@ package extension
 
 import (
 	"strings"
-
-	"golang.org/x/exp/slices"
 )
 
+type extension string
+
 const (
-	GO = "go"
+	Undefined extension = "undefined"
+	Go        extension = "go"
 )
 
 var (
-	extensions = []string{
-		GO,
+	extensionMap = map[string]extension{
+		"go": Go,
 	}
 )
 
-func IsAcceptible(filename string) bool {
+func New(filename string) extension {
 	filenameSplit := strings.Split(filename, ".")
 	if len(filenameSplit) <= 1 {
-		return false
+		return Undefined
 	}
 	extension := filenameSplit[len(filenameSplit)-1]
 	normExtension := strings.ToLower(extension)
-	return slices.Contains(extensions, normExtension)
+	got, ok := extensionMap[normExtension]
+	if ok {
+		return got
+	} else {
+		return Undefined
+	}
 }
