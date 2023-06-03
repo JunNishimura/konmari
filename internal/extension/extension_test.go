@@ -33,6 +33,13 @@ func TestNew(t *testing.T) {
 			want: JavaScript,
 		},
 		{
+			name: "true: typescript",
+			args: args{
+				filename: "test.ts",
+			},
+			want: TypeScript,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",

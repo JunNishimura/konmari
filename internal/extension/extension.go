@@ -11,6 +11,7 @@ const (
 	Go         Mark = "go"
 	Python     Mark = "python"
 	JavaScript Mark = "javascript"
+	TypeScript Mark = "typescript"
 )
 
 var (
@@ -18,6 +19,7 @@ var (
 		"go": Go,
 		"py": Python,
 		"js": JavaScript,
+		"ts": TypeScript,
 	}
 )
 
