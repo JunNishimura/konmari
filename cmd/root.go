@@ -1,5 +1,6 @@
 /*
 Copyright © 2023 NAME HERE <EMAIL ADDRESS>
+Copyright © 2023 Jun Nishimura <n.junjun0303@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +25,10 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
+	"github.com/JunNishimura/konmari/internal/file"
 	"github.com/spf13/cobra"
 )
 
@@ -41,6 +45,25 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
+		// change directory to files
+		filePaths := make([]string, 0)
+		for _, arg := range args {
+			cleanedArg := filepath.Clean(arg)
+			cleanedArg = strings.ReplaceAll(cleanedArg, `\`, "/")
+			info, err := os.Stat(cleanedArg)
+			if err != nil {
+				return fmt.Errorf("fail to get '%s' info: %w", cleanedArg, err)
+			}
+			if info.IsDir() {
+				extractedFiles, err := file.ExtractFileFromDirectory(cleanedArg)
+				if err != nil {
+					return fmt.Errorf("fail to extract files under '%s': %w", cleanedArg, err)
+				}
+				filePaths = append(filePaths, extractedFiles...)
+			} else {
+				filePaths = append(filePaths, cleanedArg)
+			}
+		}
 		return nil
 	},
 }
