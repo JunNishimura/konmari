@@ -4,20 +4,20 @@ import (
 	"strings"
 )
 
-type extension string
+type Mark string
 
 const (
-	Undefined extension = "undefined"
-	Go        extension = "go"
+	Undefined Mark = "undefined"
+	Go        Mark = "go"
 )
 
 var (
-	extensionMap = map[string]extension{
+	extensionMap = map[string]Mark{
 		"go": Go,
 	}
 )
 
-func New(filename string) extension {
+func New(filename string) Mark {
 	filenameSplit := strings.Split(filename, ".")
 	if len(filenameSplit) <= 1 {
 		return Undefined
