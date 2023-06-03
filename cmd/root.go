@@ -22,12 +22,12 @@ THE SOFTWARE.
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 
-	"github.com/JunNishimura/konmari/internal/extension"
 	"github.com/JunNishimura/konmari/internal/file"
 	"github.com/spf13/cobra"
 )
@@ -67,11 +67,16 @@ var rootCmd = &cobra.Command{
 
 		// execute comment cleaner
 		for _, path := range filePaths {
-			// file extension validation check
-			fileName := file.ExtractFileName(path)
-			if !extension.IsAcceptible(fileName) {
-				fmt.Printf("'%s' has no-acceptible file extension. skip comment cleaning\n", fileName)
-				continue
+			// clean
+			cleaner := file.NewCleaner(path)
+
+			if err := cleaner.Execute(); err != nil {
+				if errors.Is(err, file.ErrNotAcceptibleExtension) {
+					fmt.Printf("%v: %s", err, path)
+					continue
+				} else {
+					return fmt.Errorf("fail to execute cleaning: %w", err)
+				}
 			}
 		}
 
