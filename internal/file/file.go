@@ -12,6 +12,18 @@ func extractFileName(path string) string {
 	return pathSplit[len(pathSplit)-1]
 }
 
+func addPostfixToFileName(fileName, postfix string) string {
+	sp := strings.Split(fileName, ".")
+	switch len(sp) {
+	case 1:
+		return fileName + "_" + postfix
+	case 2:
+		return sp[0] + "_" + postfix + "." + sp[1]
+	default:
+		return strings.Join(sp[:len(sp)-1], ".") + "_" + postfix + "." + sp[len(sp)-1]
+	}
+}
+
 func ExtractFilesFromDirectory(dirPath string) ([]string, error) {
 	files, err := os.ReadDir(dirPath)
 	if err != nil {

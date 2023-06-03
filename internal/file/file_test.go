@@ -51,6 +51,51 @@ func TestExtractFileName(t *testing.T) {
 	}
 }
 
+func TestAddPostfixToFileName(t *testing.T) {
+	type args struct {
+		filename string
+		postfix  string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "no period file name",
+			args: args{
+				filename: "test",
+				postfix:  "cleaned",
+			},
+			want: "test_cleaned",
+		},
+		{
+			name: "one period file name",
+			args: args{
+				filename: "test.txt",
+				postfix:  "cleaned",
+			},
+			want: "test_cleaned.txt",
+		},
+		{
+			name: "two period file name",
+			args: args{
+				filename: "test.test2.txt",
+				postfix:  "cleaned",
+			},
+			want: "test.test2_cleaned.txt",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := addPostfixToFileName(tt.args.filename, tt.args.postfix)
+			if got != tt.want {
+				t.Errorf("got = %s, want = %s", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestExtractFilesFromDirectory(t *testing.T) {
 	tests := []struct {
 		name    string
