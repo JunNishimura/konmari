@@ -12,7 +12,7 @@ func ExtractFileName(path string) string {
 	return pathSplit[len(pathSplit)-1]
 }
 
-func ExtractFileFromDirectory(dirPath string) ([]string, error) {
+func ExtractFilesFromDirectory(dirPath string) ([]string, error) {
 	files, err := os.ReadDir(dirPath)
 	if err != nil {
 		return nil, err
@@ -22,7 +22,7 @@ func ExtractFileFromDirectory(dirPath string) ([]string, error) {
 	for _, file := range files {
 		path := strings.ReplaceAll(filepath.Join(dirPath, file.Name()), `\`, "/")
 		if file.IsDir() {
-			extractedFiles, err := ExtractFileFromDirectory(path)
+			extractedFiles, err := ExtractFilesFromDirectory(path)
 			if err != nil {
 				return nil, err
 			}

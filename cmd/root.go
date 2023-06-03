@@ -55,7 +55,7 @@ var rootCmd = &cobra.Command{
 				return fmt.Errorf("fail to get '%s' info: %w", cleanedArg, err)
 			}
 			if info.IsDir() {
-				extractedFiles, err := file.ExtractFileFromDirectory(cleanedArg)
+				extractedFiles, err := file.ExtractFilesFromDirectory(cleanedArg)
 				if err != nil {
 					return fmt.Errorf("fail to extract files under '%s': %w", cleanedArg, err)
 				}
