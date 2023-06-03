@@ -32,6 +32,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	postfix = ""
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "konmari",
@@ -75,7 +79,7 @@ var rootCmd = &cobra.Command{
 			// clean
 			cleaner := file.NewCleaner(path)
 
-			if err := cleaner.Execute(isOverWrite); err != nil {
+			if err := cleaner.Execute(isOverWrite, postfix); err != nil {
 				if errors.Is(err, file.ErrNotAcceptibleExtension) {
 					fmt.Printf("%v: %s", err, path)
 					continue
@@ -100,4 +104,5 @@ func Execute() {
 
 func init() {
 	rootCmd.Flags().BoolP("overwrite", "o", false, "overwrite existing files")
+	rootCmd.Flags().StringVarP(&postfix, "postfix", "p", "", "postfix for cleaned files")
 }

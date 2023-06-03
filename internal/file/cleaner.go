@@ -9,6 +9,10 @@ import (
 	"github.com/JunNishimura/konmari/internal/extension"
 )
 
+const (
+	defautlPostfix = "cleaned"
+)
+
 var (
 	ErrNotAcceptibleExtension = errors.New("not acceptible file extension")
 	regexpMap                 = map[extension.Mark]string{
@@ -37,7 +41,7 @@ func newCleaner(filePath string) *Cleaner {
 	}
 }
 
-func (c *Cleaner) Execute(isOverWrite bool) error {
+func (c *Cleaner) Execute(isOverWrite bool, postfix string) error {
 	if c.extension == extension.Undefined {
 		return ErrNotAcceptibleExtension
 	}
@@ -68,7 +72,12 @@ func (c *Cleaner) Execute(isOverWrite bool) error {
 	} else {
 		parentDir := filepath.Dir(c.filePath)
 		fileName := extractFileName(c.filePath)
-		cleanedFileName := addPostfixToFileName(fileName, "cleaned")
+		var cleanedFileName string
+		if postfix == "" {
+			cleanedFileName = addPostfixToFileName(fileName, defautlPostfix)
+		} else {
+			cleanedFileName = addPostfixToFileName(fileName, postfix)
+		}
 		newFilePath := filepath.Join(parentDir, cleanedFileName)
 		f, err := os.Create(newFilePath)
 		if err != nil {
