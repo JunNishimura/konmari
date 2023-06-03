@@ -13,15 +13,17 @@ const (
 	JavaScript Mark = "javascript"
 	TypeScript Mark = "typescript"
 	Ruby       Mark = "ruby"
+	PHP        Mark = "php"
 )
 
 var (
 	extensionMap = map[string]Mark{
-		"go": Go,
-		"py": Python,
-		"js": JavaScript,
-		"ts": TypeScript,
-		"rb": Ruby,
+		"go":  Go,
+		"py":  Python,
+		"js":  JavaScript,
+		"ts":  TypeScript,
+		"rb":  Ruby,
+		"php": PHP,
 	}
 )
 
