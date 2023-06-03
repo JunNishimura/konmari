@@ -12,6 +12,7 @@ const (
 	Python     Mark = "python"
 	JavaScript Mark = "javascript"
 	TypeScript Mark = "typescript"
+	Ruby       Mark = "ruby"
 )
 
 var (
@@ -20,6 +21,7 @@ var (
 		"py": Python,
 		"js": JavaScript,
 		"ts": TypeScript,
+		"rb": Ruby,
 	}
 )
 
