@@ -26,6 +26,13 @@ func TestNew(t *testing.T) {
 			want: Python,
 		},
 		{
+			name: "true: javascript",
+			args: args{
+				filename: "test.js",
+			},
+			want: JavaScript,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",

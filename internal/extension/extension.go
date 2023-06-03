@@ -7,15 +7,17 @@ import (
 type Mark string
 
 const (
-	Undefined Mark = "undefined"
-	Go        Mark = "go"
-	Python    Mark = "python"
+	Undefined  Mark = "undefined"
+	Go         Mark = "go"
+	Python     Mark = "python"
+	JavaScript Mark = "javascript"
 )
 
 var (
 	extensionMap = map[string]Mark{
 		"go": Go,
 		"py": Python,
+		"js": JavaScript,
 	}
 )
 
