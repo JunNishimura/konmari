@@ -93,7 +93,7 @@ func main() {
 			f.Close()
 
 			cleaner := NewCleaner(testPath)
-			err = cleaner.Execute(false)
+			err = cleaner.Execute(false, defautlPostfix)
 			if !errors.Is(err, tt.wantErr) {
 				t.Errorf("got = %v, want = %v", err, tt.wantErr)
 			}
