@@ -134,6 +134,24 @@ console.log("Hello, World")
 console.log("hogehoge") `,
 			wantErr: nil,
 		},
+		{
+			name:     "success: ruby",
+			fileName: "test.rb",
+			content: `
+# one-line
+puts "Hello, World"
+=begin
+multiple
+comment
+=end
+puts "hogehoge" # comment`,
+			want: `
+
+puts "Hello, World"
+
+puts "hogehoge" `,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
