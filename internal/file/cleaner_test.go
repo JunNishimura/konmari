@@ -49,13 +49,15 @@ func TestNewCleaner(t *testing.T) {
 
 func TestExecute(t *testing.T) {
 	tests := []struct {
-		name    string
-		content string
-		want    string
-		wantErr error
+		name     string
+		fileName string
+		content  string
+		want     string
+		wantErr  error
 	}{
 		{
-			name: "success",
+			name:     "success: go",
+			fileName: "test.go",
 			content: `
 package main
 // import package
@@ -76,11 +78,29 @@ func main() {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: python",
+			fileName: "test.py",
+			content: `
+# comment
+def main():
+	'''
+	main function
+	this is test
+	'''
+	print("hello") # print hello`,
+			want: `
+
+def main():
+	
+	print("hello") `,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			tmpDir := t.TempDir()
-			testPath := filepath.Join(tmpDir, "test.go")
+			testPath := filepath.Join(tmpDir, tt.fileName)
 			f, err := os.Create(testPath)
 			if err != nil {
 				t.Log(err)
@@ -98,7 +118,8 @@ func main() {
 				t.Errorf("got = %v, want = %v", err, tt.wantErr)
 			}
 
-			testCleanedPath := filepath.Join(tmpDir, "test_cleaned.go")
+			cleanedFileName := addPostfixToFileName(tt.fileName, defautlPostfix)
+			testCleanedPath := filepath.Join(tmpDir, cleanedFileName)
 			b, err := os.ReadFile(testCleanedPath)
 			if err != nil {
 				t.Log(err)

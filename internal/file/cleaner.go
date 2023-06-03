@@ -16,7 +16,8 @@ const (
 var (
 	ErrNotAcceptibleExtension = errors.New("not acceptible file extension")
 	regexpMap                 = map[extension.Mark]string{
-		extension.Go: `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.Go:     `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.Python: `#.*|#.*|'''[\s\S]*?'''`,
 	}
 )
 
