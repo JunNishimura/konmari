@@ -9,11 +9,13 @@ type Mark string
 const (
 	Undefined Mark = "undefined"
 	Go        Mark = "go"
+	Python    Mark = "python"
 )
 
 var (
 	extensionMap = map[string]Mark{
 		"go": Go,
+		"py": Python,
 	}
 )
 

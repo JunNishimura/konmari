@@ -12,11 +12,18 @@ func TestNew(t *testing.T) {
 		want Mark
 	}{
 		{
-			name: "true",
+			name: "true: go",
 			args: args{
 				filename: "test.go",
 			},
 			want: Go,
+		},
+		{
+			name: "true: python",
+			args: args{
+				filename: "test.py",
+			},
+			want: Python,
 		},
 		{
 			name: "false: no extension",
