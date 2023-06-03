@@ -47,6 +47,13 @@ func TestNew(t *testing.T) {
 			want: Ruby,
 		},
 		{
+			name: "true: php",
+			args: args{
+				filename: "test.php",
+			},
+			want: PHP,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",
