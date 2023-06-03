@@ -152,6 +152,31 @@ puts "Hello, World"
 puts "hogehoge" `,
 			wantErr: nil,
 		},
+		{
+			name:     "success: php",
+			fileName: "test.php",
+			content: `
+<?php
+# one line comment
+echo "hello, world"; # comment
+// one line comment
+echo "hoge hoge"; // comment
+/*
+multiple 
+line
+comment
+*/
+?>`,
+			want: `
+<?php
+
+echo "hello, world"; 
+
+echo "hoge hoge"; 
+
+?>`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
