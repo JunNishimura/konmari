@@ -93,7 +93,7 @@ func main() {
 			f.Close()
 
 			cleaner := NewCleaner(testPath)
-			err = cleaner.Execute()
+			err = cleaner.Execute(false)
 			if !errors.Is(err, tt.wantErr) {
 				t.Errorf("got = %v, want = %v", err, tt.wantErr)
 			}

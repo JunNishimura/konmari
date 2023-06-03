@@ -37,7 +37,7 @@ func newCleaner(filePath string) *Cleaner {
 	}
 }
 
-func (c *Cleaner) Execute() error {
+func (c *Cleaner) Execute(isOverWrite bool) error {
 	if c.extension == extension.Undefined {
 		return ErrNotAcceptibleExtension
 	}
@@ -56,17 +56,28 @@ func (c *Cleaner) Execute() error {
 	cleanedSrc := re.ReplaceAll(src, []byte(""))
 
 	// write to file
-	parentDir := filepath.Dir(c.filePath)
-	fileName := extractFileName(c.filePath)
-	cleanedFileName := addPostfixToFileName(fileName, "cleaned")
-	newFilePath := filepath.Join(parentDir, cleanedFileName)
-	f, err := os.Create(newFilePath)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-	if _, err := f.Write(cleanedSrc); err != nil {
-		return err
+	if isOverWrite {
+		f, err := os.Create(c.filePath)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		if _, err := f.Write(cleanedSrc); err != nil {
+			return err
+		}
+	} else {
+		parentDir := filepath.Dir(c.filePath)
+		fileName := extractFileName(c.filePath)
+		cleanedFileName := addPostfixToFileName(fileName, "cleaned")
+		newFilePath := filepath.Join(parentDir, cleanedFileName)
+		f, err := os.Create(newFilePath)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+		if _, err := f.Write(cleanedSrc); err != nil {
+			return err
+		}
 	}
 
 	return nil

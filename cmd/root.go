@@ -65,12 +65,17 @@ var rootCmd = &cobra.Command{
 			}
 		}
 
+		isOverWrite, err := cmd.Flags().GetBool("overwrite")
+		if err != nil {
+			return fmt.Errorf("fail to get overwrite flag: %w", err)
+		}
+
 		// execute comment cleaner
 		for _, path := range filePaths {
 			// clean
 			cleaner := file.NewCleaner(path)
 
-			if err := cleaner.Execute(); err != nil {
+			if err := cleaner.Execute(isOverWrite); err != nil {
 				if errors.Is(err, file.ErrNotAcceptibleExtension) {
 					fmt.Printf("%v: %s", err, path)
 					continue
@@ -94,5 +99,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("overwrite", "o", false, "overwrite existing files")
 }
