@@ -28,6 +28,7 @@ var (
 		extension.Rust:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Swift:      `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Kotlin:     `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.Dart:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 
