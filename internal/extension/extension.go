@@ -15,6 +15,7 @@ const (
 	Ruby       Mark = "ruby"
 	PHP        Mark = "php"
 	Java       Mark = "java"
+	C          Mark = "c"
 )
 
 var (
@@ -26,6 +27,7 @@ var (
 		"rb":   Ruby,
 		"php":  PHP,
 		"java": Java,
+		"c":    C,
 	}
 )
 
