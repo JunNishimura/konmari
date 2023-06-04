@@ -336,6 +336,27 @@ fun main(args: Array<String>): String {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: dart",
+			fileName: "test.dart",
+			content: `
+// one line comment
+/*
+multiple
+line
+comment
+*/
+void main() {
+	print('Hello, World!'); // comment
+}`,
+			want: `
+
+
+void main() {
+	print('Hello, World!'); 
+}`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

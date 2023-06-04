@@ -96,6 +96,13 @@ func TestNew(t *testing.T) {
 			want: Kotlin,
 		},
 		{
+			name: "true: dart",
+			args: args{
+				filename: "test.dart",
+			},
+			want: Dart,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",

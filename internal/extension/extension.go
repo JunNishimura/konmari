@@ -20,6 +20,7 @@ const (
 	Rust       Mark = "rust"
 	Swift      Mark = "swift"
 	Kotlin     Mark = "kotlin"
+	Dart       Mark = "dart"
 )
 
 var (
@@ -36,6 +37,7 @@ var (
 		"rs":    Rust,
 		"swift": Swift,
 		"kt":    Kotlin,
+		"dart":  Dart,
 	}
 )
 
