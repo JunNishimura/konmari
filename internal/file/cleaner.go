@@ -22,6 +22,7 @@ var (
 		extension.TypeScript: `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Ruby:       `#.*|=begin[\s\S]*?=end`,
 		extension.PHP:        `\/\*[\s\S]*?\*\/|\/\/.*|#.*`,
+		extension.Java:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 

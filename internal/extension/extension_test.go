@@ -54,6 +54,13 @@ func TestNew(t *testing.T) {
 			want: PHP,
 		},
 		{
+			name: "true: java",
+			args: args{
+				filename: "test.java",
+			},
+			want: Java,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",
