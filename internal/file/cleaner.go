@@ -27,6 +27,7 @@ var (
 		extension.Cpp:        `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Rust:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Swift:      `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.Kotlin:     `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 
