@@ -17,6 +17,7 @@ const (
 	Java       Mark = "java"
 	C          Mark = "c"
 	Cpp        Mark = "cpp"
+	Rust       Mark = "rust"
 )
 
 var (
@@ -30,6 +31,7 @@ var (
 		"java": Java,
 		"c":    C,
 		"cpp":  Cpp,
+		"rs":   Rust,
 	}
 )
 
