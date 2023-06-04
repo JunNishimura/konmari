@@ -315,6 +315,27 @@ class ViewController: UIViewController {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: kotlin",
+			fileName: "test.kt",
+			content: `
+// one line comment
+/*
+multiple
+line
+comment
+*/
+fun main(args: Array<String>): String {
+	println("Hello, World") // comment
+}`,
+			want: `
+
+
+fun main(args: Array<String>): String {
+	println("Hello, World") 
+}`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
