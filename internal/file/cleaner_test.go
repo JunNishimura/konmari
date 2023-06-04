@@ -357,6 +357,39 @@ void main() {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: html",
+			fileName: "test.html",
+			content: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+</head>
+<body>
+	<!-- one line comment -->
+	<!--
+		multiple
+		line
+		comment
+	-->
+	<h1>Hello, World</h1><!-- comment -->
+</body>
+</html>`,
+			want: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Document</title>
+</head>
+<body>
+	
+	
+	<h1>Hello, World</h1>
+</body>
+</html>`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

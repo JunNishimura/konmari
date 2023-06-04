@@ -103,6 +103,13 @@ func TestNew(t *testing.T) {
 			want: Dart,
 		},
 		{
+			name: "true: html",
+			args: args{
+				filename: "test.html",
+			},
+			want: HTML,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",

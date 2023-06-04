@@ -21,6 +21,7 @@ const (
 	Swift      Mark = "swift"
 	Kotlin     Mark = "kotlin"
 	Dart       Mark = "dart"
+	HTML       Mark = "html"
 )
 
 var (
@@ -38,6 +39,7 @@ var (
 		"swift": Swift,
 		"kt":    Kotlin,
 		"dart":  Dart,
+		"html":  HTML,
 	}
 )
 
