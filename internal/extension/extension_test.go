@@ -89,6 +89,13 @@ func TestNew(t *testing.T) {
 			want: Swift,
 		},
 		{
+			name: "true: kotlin",
+			args: args{
+				filename: "test.kt",
+			},
+			want: Kotlin,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",
