@@ -56,6 +56,13 @@ func TestExecute(t *testing.T) {
 		wantErr  error
 	}{
 		{
+			name:     "fail",
+			fileName: "test.xxx",
+			content:  "",
+			want:     "",
+			wantErr:  ErrNotAcceptibleExtension,
+		},
+		{
 			name:     "success: go",
 			fileName: "test.go",
 			content: `
@@ -249,6 +256,27 @@ int main() {
 int main() {
 	printf("Hello, World"); 
 	return 0;
+}`,
+			wantErr: nil,
+		},
+		{
+			name:     "success: rust",
+			fileName: "test.rs",
+			content: `
+// one line comment
+/*
+multiple
+line 
+comment
+*/
+fn main() {
+	println!("Hello, World!"); // comment
+}`,
+			want: `
+
+
+fn main() {
+	println!("Hello, World!"); 
 }`,
 			wantErr: nil,
 		},
