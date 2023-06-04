@@ -280,6 +280,41 @@ fn main() {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: rust",
+			fileName: "test.rs",
+			content: `
+import UIKit
+// one line comment
+/*
+multiple
+line
+comment
+*/
+class ViewController: UIViewController {
+	override func viewDidLoad() {
+		println("HelloWorld!") // comment
+		super.viewDidLoad()
+	}
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+}`,
+			want: `
+import UIKit
+
+
+class ViewController: UIViewController {
+	override func viewDidLoad() {
+		println("HelloWorld!") 
+		super.viewDidLoad()
+	}
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+}`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
