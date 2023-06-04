@@ -29,6 +29,7 @@ var (
 		extension.Swift:      `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Kotlin:     `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Dart:       `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.HTML:       `<!--[\s\S]*?-->`,
 	}
 )
 
