@@ -75,6 +75,13 @@ func TestNew(t *testing.T) {
 			want: Cpp,
 		},
 		{
+			name: "true: csharp",
+			args: args{
+				filename: "test.cs",
+			},
+			want: Csharp,
+		},
+		{
 			name: "true: rs",
 			args: args{
 				filename: "test.rs",
