@@ -227,6 +227,31 @@ int main() {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: cpp",
+			fileName: "test.cpp",
+			content: `
+#include <stdio.h>
+// oneline comment
+/*
+multiple
+line
+comment
+*/
+int main() {
+	printf("Hello, World"); // comment
+	return 0;
+}`,
+			want: `
+#include <stdio.h>
+
+
+int main() {
+	printf("Hello, World"); 
+	return 0;
+}`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

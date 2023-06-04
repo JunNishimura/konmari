@@ -68,6 +68,13 @@ func TestNew(t *testing.T) {
 			want: C,
 		},
 		{
+			name: "true: cpp",
+			args: args{
+				filename: "test.cpp",
+			},
+			want: Cpp,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",

@@ -16,6 +16,7 @@ const (
 	PHP        Mark = "php"
 	Java       Mark = "java"
 	C          Mark = "c"
+	Cpp        Mark = "cpp"
 )
 
 var (
@@ -28,6 +29,7 @@ var (
 		"php":  PHP,
 		"java": Java,
 		"c":    C,
+		"cpp":  Cpp,
 	}
 )
 
