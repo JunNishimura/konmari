@@ -18,20 +18,22 @@ const (
 	C          Mark = "c"
 	Cpp        Mark = "cpp"
 	Rust       Mark = "rust"
+	Swift      Mark = "swift"
 )
 
 var (
 	extensionMap = map[string]Mark{
-		"go":   Go,
-		"py":   Python,
-		"js":   JavaScript,
-		"ts":   TypeScript,
-		"rb":   Ruby,
-		"php":  PHP,
-		"java": Java,
-		"c":    C,
-		"cpp":  Cpp,
-		"rs":   Rust,
+		"go":    Go,
+		"py":    Python,
+		"js":    JavaScript,
+		"ts":    TypeScript,
+		"rb":    Ruby,
+		"php":   PHP,
+		"java":  Java,
+		"c":     C,
+		"cpp":   Cpp,
+		"rs":    Rust,
+		"swift": Swift,
 	}
 )
 

@@ -82,6 +82,13 @@ func TestNew(t *testing.T) {
 			want: Rust,
 		},
 		{
+			name: "true: swift",
+			args: args{
+				filename: "test.swift",
+			},
+			want: Swift,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",
