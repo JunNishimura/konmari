@@ -260,6 +260,33 @@ int main() {
 			wantErr: nil,
 		},
 		{
+			name:     "success: cs",
+			fileName: "test.cs",
+			content: `
+using System;
+// one line comment
+/*
+multiple 
+line
+comment
+*/
+public class Hello{
+	public static void Main(){
+	Console.WriteLine("hello world!"); // comment
+	}
+}`,
+			want: `
+using System;
+
+
+public class Hello{
+	public static void Main(){
+	Console.WriteLine("hello world!"); 
+	}
+}`,
+			wantErr: nil,
+		},
+		{
 			name:     "success: rust",
 			fileName: "test.rs",
 			content: `

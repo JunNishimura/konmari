@@ -17,6 +17,7 @@ const (
 	Java       Mark = "java"
 	C          Mark = "c"
 	Cpp        Mark = "cpp"
+	Csharp     Mark = "c#"
 	Rust       Mark = "rust"
 	Swift      Mark = "swift"
 	Kotlin     Mark = "kotlin"
@@ -35,6 +36,7 @@ var (
 		"java":  Java,
 		"c":     C,
 		"cpp":   Cpp,
+		"cs":    Csharp,
 		"rs":    Rust,
 		"swift": Swift,
 		"kt":    Kotlin,
