@@ -23,6 +23,7 @@ var (
 		extension.Ruby:       `#.*|=begin[\s\S]*?=end`,
 		extension.PHP:        `\/\*[\s\S]*?\*\/|\/\/.*|#.*`,
 		extension.Java:       `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.C:          `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 
