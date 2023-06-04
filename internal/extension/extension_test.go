@@ -61,6 +61,13 @@ func TestNew(t *testing.T) {
 			want: Java,
 		},
 		{
+			name: "true: c",
+			args: args{
+				filename: "test.c",
+			},
+			want: C,
+		},
+		{
 			name: "false: no extension",
 			args: args{
 				filename: "test",
