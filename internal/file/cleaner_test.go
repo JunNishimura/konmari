@@ -56,6 +56,13 @@ func TestExecute(t *testing.T) {
 		wantErr  error
 	}{
 		{
+			name:     "fail",
+			fileName: "test.xxx",
+			content:  "",
+			want:     "",
+			wantErr:  ErrNotAcceptibleExtension,
+		},
+		{
 			name:     "success: go",
 			fileName: "test.go",
 			content: `
