@@ -252,6 +252,27 @@ int main() {
 }`,
 			wantErr: nil,
 		},
+		{
+			name:     "success: rust",
+			fileName: "test.rs",
+			content: `
+// one line comment
+/*
+multiple
+line 
+comment
+*/
+fn main() {
+	println!("Hello, World!"); // comment
+}`,
+			want: `
+
+
+fn main() {
+	println!("Hello, World!"); 
+}`,
+			wantErr: nil,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

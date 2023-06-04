@@ -25,6 +25,7 @@ var (
 		extension.Java:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.C:          `\/\*[\s\S]*?\*\/|\/\/.*`,
 		extension.Cpp:        `\/\*[\s\S]*?\*\/|\/\/.*`,
+		extension.Rust:       `\/\*[\s\S]*?\*\/|\/\/.*`,
 	}
 )
 
