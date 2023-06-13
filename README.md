@@ -1,4 +1,4 @@
-# konmari / CLI tool to delete code comment
+# konmari / CLI tool to delete code comments
 
 <p align='left'>
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/JunNishimura/konmari">
